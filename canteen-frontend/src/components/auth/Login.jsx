@@ -42,7 +42,7 @@ export default function Login() {
     const creds = {
       admin:    { email: 'admin@canteen.com',    password: 'cipro123' },
       cashier:  { email: 'cashier1@canteen.com', password: 'madjos123' },
-      customer: { email: 'lagang@student.edu',   password: 'password' },
+      customer: { email: 'johnvincent@student.edu',   password: 'password' },
     };
     setForm(creds[role]);
   };
