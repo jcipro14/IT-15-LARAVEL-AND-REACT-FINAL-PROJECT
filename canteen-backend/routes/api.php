@@ -7,26 +7,26 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\ReportController;
 
-// Public Routes
+
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login',    [AuthController::class, 'login']);
 Route::get('/menu',            [MenuController::class, 'index']);
 Route::get('/menu/{menuItem}', [MenuController::class, 'show']);
 Route::get('/categories',      [MenuController::class, 'categories']);
 
-// Authenticated Routes
+
 Route::middleware('auth:sanctum')->group(function () {
 
-    // Auth
+   
     Route::post('/logout',  [AuthController::class, 'logout']);
     Route::get('/me',       [AuthController::class, 'me']);
     Route::put('/profile',  [AuthController::class, 'updateProfile']);
 
-    // All roles - place orders and view own orders
+    
     Route::post('/orders',   [OrderController::class, 'store']);
     Route::get('/my-orders', [OrderController::class, 'myOrders']);
 
-    // Cashier + Admin
+   
     Route::middleware('role:admin,cashier')->group(function () {
         Route::get('/orders',                      [OrderController::class, 'index']);
         Route::get('/orders/queue',                [OrderController::class, 'queue']);
@@ -35,7 +35,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::patch('/orders/{order}/cancel',     [OrderController::class, 'cancel']);
     });
 
-    // Admin Only
+    
     Route::middleware('role:admin')->group(function () {
         Route::post('/menu',                                  [MenuController::class, 'store']);
         Route::put('/menu/{menuItem}',                        [MenuController::class, 'update']);

@@ -1,11 +1,4 @@
-/**
- * LoadingSpinner
- *
- * Props:
- *  size    — 'sm' | 'md' (default) | 'lg' | 'xl'
- *  message — optional text shown below the spinner
- *  fullPage — if true, centres the spinner in the full viewport
- */
+
 export default function LoadingSpinner({ size = 'md', message, fullPage = false }) {
   const sizeMap = {
     sm:  'h-6  w-6  border-2',

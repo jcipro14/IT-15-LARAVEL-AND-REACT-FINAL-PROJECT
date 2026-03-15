@@ -16,15 +16,15 @@ class OrderSeeder extends Seeder
         $cashiers  = User::where('role', 'cashier')->pluck('id')->toArray();
         $customers = User::where('role', 'customer')->pluck('id')->toArray();
         $menuItems = MenuItem::all();
-        $statuses  = ['completed', 'completed', 'completed', 'completed', 'cancelled']; // 80% complete
+        $statuses  = ['completed', 'completed', 'completed', 'completed', 'cancelled']; 
         $payments  = ['cash', 'cash', 'cash', 'gcash', 'maya'];
 
         for ($i = 0; $i < 220; $i++) {
-            // Spread orders over last 90 days
+            
             $createdAt = Carbon::now()->subDays(rand(0, 90))->subHours(rand(0, 23))->subMinutes(rand(0, 59));
             $status    = $statuses[array_rand($statuses)];
 
-            // Pick 1-4 random menu items
+            
             $selectedItems = $menuItems->random(rand(1, 4));
             $subtotal = 0;
             $orderItemsData = [];
@@ -44,7 +44,7 @@ class OrderSeeder extends Seeder
 
             $discount    = rand(0, 1) ? rand(5, 20) : 0;
             $total       = max(0, $subtotal - $discount);
-            $amountPaid  = $total + rand(0, 50); // give change sometimes
+            $amountPaid  = $total + rand(0, 50); 
             $change      = $amountPaid - $total;
 
             $order = Order::create([

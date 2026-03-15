@@ -65,11 +65,11 @@ function OrderCard({ order, cfg, onAdvance, onCancel, advancing }) {
         border: `1px solid ${isUrgent ? 'rgba(239,68,68,0.3)' : cfg.border}`,
         boxShadow: isUrgent ? '0 0 0 1px rgba(239,68,68,0.15)' : '0 1px 4px rgba(0,0,0,0.06)',
       }}>
-      {/* Top accent bar */}
+      
       <div className="h-1 w-full" style={{background: isUrgent ? '#ef4444' : cfg.accent}} />
 
       <div className="p-4">
-        {/* Header row */}
+        
         <div className="flex items-start justify-between mb-3">
           <div>
             <div className="font-black text-gray-900 text-sm font-mono tracking-tight">
@@ -89,7 +89,7 @@ function OrderCard({ order, cfg, onAdvance, onCancel, advancing }) {
           </div>
         </div>
 
-        {/* Items */}
+       
         <div className="space-y-1.5 mb-3 pb-3 border-b border-gray-100">
           {order.order_items?.map(item => (
             <div key={item.id} className="flex items-center justify-between">
@@ -102,7 +102,7 @@ function OrderCard({ order, cfg, onAdvance, onCancel, advancing }) {
           ))}
         </div>
 
-        {/* Actions */}
+    
         <div className="flex gap-2">
           {cfg.next && (
             <button onClick={() => onAdvance(order)} disabled={advancing}
@@ -182,7 +182,7 @@ export default function OrderQueue() {
 
   return (
     <div className="h-full flex flex-col overflow-hidden" style={{background: '#f8f7f5'}}>
-      {/* Header */}
+      
       <div className="bg-white border-b border-gray-100 px-6 py-4 flex-shrink-0 shadow-sm">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
@@ -192,7 +192,7 @@ export default function OrderQueue() {
                 {totalActive} active · refreshes every 10s · last {lastRefresh.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit', second:'2-digit'})}
               </p>
             </div>
-            {/* Summary pills */}
+            
             <div className="hidden md:flex items-center gap-2">
               {Object.entries(COLS).map(([status, cfg]) => {
                 const count = orders.filter(o => o.status === status).length;
@@ -216,7 +216,7 @@ export default function OrderQueue() {
         </div>
       </div>
 
-      {/* Columns */}
+     
       <div className="flex-1 overflow-hidden p-5">
         <div className="grid grid-cols-3 gap-5 h-full">
           {Object.entries(COLS).map(([status, cfg]) => {
@@ -224,7 +224,7 @@ export default function OrderQueue() {
             return (
               <div key={status} className="flex flex-col overflow-hidden rounded-2xl"
                 style={{background: cfg.bg, border: `1px solid ${cfg.border}`}}>
-                {/* Column header */}
+                
                 <div className="flex items-center gap-2.5 px-4 py-3 flex-shrink-0"
                   style={{borderBottom: `1px solid ${cfg.border}`}}>
                   <span className="text-lg">{cfg.icon}</span>
@@ -235,7 +235,7 @@ export default function OrderQueue() {
                   </div>
                 </div>
 
-                {/* Scrollable cards */}
+               
                 <div className="flex-1 overflow-y-auto p-3 space-y-3"
                   style={{scrollbarWidth: 'thin', scrollbarColor: `${cfg.accent}40 transparent`}}>
                   {colOrders.length === 0 ? (

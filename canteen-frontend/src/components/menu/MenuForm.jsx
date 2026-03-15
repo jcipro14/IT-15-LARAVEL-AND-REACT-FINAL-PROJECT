@@ -42,7 +42,7 @@ export default function MenuForm({ item, categories, onClose, onSaved }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
-        {/* Header */}
+       
         <div className="flex items-center justify-between p-6 border-b border-gray-100">
           <h2 className="text-lg font-bold text-gray-800">
             {item ? '✏️ Edit Menu Item' : '➕ Add Menu Item'}
@@ -57,7 +57,7 @@ export default function MenuForm({ item, categories, onClose, onSaved }) {
             </div>
           )}
 
-          {/* Name & Category */}
+         
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block text-xs font-semibold text-gray-600 mb-1">Item Name *</label>
@@ -85,7 +85,7 @@ export default function MenuForm({ item, categories, onClose, onSaved }) {
             </div>
           </div>
 
-          {/* Description */}
+        
           <div>
             <label className="block text-xs font-semibold text-gray-600 mb-1">Description</label>
             <textarea
@@ -97,7 +97,7 @@ export default function MenuForm({ item, categories, onClose, onSaved }) {
             />
           </div>
 
-          {/* Price, Stock, Threshold, Prep time */}
+         
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block text-xs font-semibold text-gray-600 mb-1">Price (₱) *</label>
@@ -144,7 +144,7 @@ export default function MenuForm({ item, categories, onClose, onSaved }) {
             </div>
           </div>
 
-          {/* Toggles */}
+         
           <div className="flex gap-6 pt-1">
             <label className="flex items-center gap-2 text-sm text-gray-700 cursor-pointer select-none">
               <input
@@ -166,7 +166,7 @@ export default function MenuForm({ item, categories, onClose, onSaved }) {
             </label>
           </div>
 
-          {/* Actions */}
+          
           <div className="flex gap-3 pt-2">
             <button
               type="button"

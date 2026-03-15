@@ -22,7 +22,6 @@ class ReportController extends Controller
         $totalOrders   = (clone $completed)->count();
         $avgOrderValue = $totalOrders > 0 ? $totalRevenue / $totalOrders : 0;
 
-        // Today stats
         $todayRevenue = Order::completed()->today()->sum('total_amount');
         $todayOrders  = Order::completed()->today()->count();
 

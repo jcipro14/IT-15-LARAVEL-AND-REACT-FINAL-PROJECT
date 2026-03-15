@@ -41,7 +41,7 @@ export default function Sidebar() {
 
   return (
     <aside className="w-64 min-h-screen flex flex-col" style={{background: '#0f0f0f', borderRight: '1px solid #1f1f1f'}}>
-      {/* Logo */}
+      
       <div className="px-6 py-5" style={{borderBottom: '1px solid #1f1f1f'}}>
         <div className="flex items-center gap-3">
           <div className="flex-shrink-0">
@@ -66,7 +66,7 @@ export default function Sidebar() {
         </div>
       </div>
 
-      {/* Nav */}
+      
       <nav className="flex-1 px-3 py-4 space-y-0.5">
         {navItems.map((item) => (
           <NavLink key={item.to + item.label} to={item.to}

@@ -34,7 +34,7 @@ export default function InventoryTable() {
 
   return (
     <div className="h-full flex flex-col overflow-hidden" style={{background: '#f8f7f5'}}>
-      {/* Header */}
+     
       <div className="bg-white px-6 py-4 flex-shrink-0 shadow-sm" style={{borderBottom: '1px solid #f0f0f0'}}>
         <div className="flex items-center justify-between mb-4">
           <div>
@@ -66,7 +66,7 @@ export default function InventoryTable() {
         </div>
       </div>
 
-      {/* Table */}
+      
       <div className="flex-1 overflow-y-auto p-5">
         <div className="bg-white rounded-2xl overflow-hidden shadow-sm" style={{border: '1px solid #f0f0f0'}}>
           <table className="w-full text-sm">
@@ -131,9 +131,9 @@ export default function InventoryTable() {
 function AdjustModal({ item, onClose, onSaved, allItems }) {
   const isBulk = item?.bulk === true;
 
-  // Single item state
+  
   const [form, setForm]   = useState({ type: 'restock', quantity: '', reason: '' });
-  // Bulk state
+ 
   const [bulkQty, setBulkQty]       = useState('');
   const [bulkReason, setBulkReason] = useState('');
   const [selected, setSelected]     = useState([]);
@@ -155,7 +155,7 @@ function AdjustModal({ item, onClose, onSaved, allItems }) {
     setSaving(true); setError('');
     try {
       if (isBulk) {
-        // Sequential individual adjusts for each selected item
+        
         await Promise.all(selected.map(id =>
           api.patch(`/inventory/${id}/adjust`, {
             type: 'restock',
@@ -179,7 +179,7 @@ function AdjustModal({ item, onClose, onSaved, allItems }) {
       style={{background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)'}}>
       <div className="bg-white rounded-3xl shadow-2xl w-full overflow-hidden"
         style={{maxWidth: isBulk ? '560px' : '420px', maxHeight: '90vh', display: 'flex', flexDirection: 'column'}}>
-        {/* Header */}
+      
         <div className="px-6 py-4 flex-shrink-0" style={{borderBottom: '1px solid #f0f0f0'}}>
           <div className="flex items-center justify-between">
             <div>
@@ -203,7 +203,7 @@ function AdjustModal({ item, onClose, onSaved, allItems }) {
 
             {isBulk ? (
               <>
-                {/* Item selection */}
+                
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs font-black text-gray-400 uppercase tracking-widest">Select Items</span>
@@ -236,7 +236,7 @@ function AdjustModal({ item, onClose, onSaved, allItems }) {
                   )}
                 </div>
 
-                {/* Bulk quantity */}
+               
                 <div>
                   <label className="text-xs font-black text-gray-400 uppercase tracking-widest mb-2 block">Quantity to add to each</label>
                   <input required type="number" min="1" value={bulkQty}
@@ -247,7 +247,7 @@ function AdjustModal({ item, onClose, onSaved, allItems }) {
                     onBlur={e => e.target.style.borderColor = 'transparent'}/>
                 </div>
 
-                {/* Bulk reason */}
+                
                 <div>
                   <label className="text-xs font-black text-gray-400 uppercase tracking-widest mb-2 block">Reason</label>
                   <input required value={bulkReason}
@@ -293,7 +293,7 @@ function AdjustModal({ item, onClose, onSaved, allItems }) {
             )}
           </div>
 
-          {/* Footer buttons */}
+          
           <div className="px-6 py-4 flex-shrink-0 flex gap-3" style={{borderTop: '1px solid #f0f0f0'}}>
             <button type="button" onClick={onClose}
               className="flex-1 py-3 rounded-2xl text-sm font-bold text-gray-600 transition hover:bg-gray-200"

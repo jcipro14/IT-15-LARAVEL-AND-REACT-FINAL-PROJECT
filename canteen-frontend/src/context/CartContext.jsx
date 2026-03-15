@@ -33,7 +33,7 @@ const cartReducer = (state, action) => {
 
 const initialState = { items: [], discount: 0, paymentMethod: 'cash', amountPaid: 0 };
 
-// Separate cart stores per role — stored outside React so they survive re-renders
+
 const cartStores = { admin: { ...initialState }, cashier: { ...initialState }, customer: { ...initialState } };
 
 export function CartProvider({ children }) {

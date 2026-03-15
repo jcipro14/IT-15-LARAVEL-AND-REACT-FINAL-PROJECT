@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('low_stock_threshold')->default(10);
             $table->boolean('is_available')->default(true);
             $table->boolean('is_featured')->default(false);
-            $table->integer('preparation_time')->default(5); // minutes
+            $table->integer('preparation_time')->default(5); 
             $table->timestamps();
         });
     }

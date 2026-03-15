@@ -30,7 +30,7 @@ class User extends Authenticatable
         'is_active' => 'boolean',
     ];
 
-    // Relationships
+   
     public function orders()
     {
         return $this->hasMany(Order::class);
@@ -46,7 +46,7 @@ class User extends Authenticatable
         return $this->hasMany(InventoryLog::class);
     }
 
-    // Role helpers
+  
     public function isAdmin(): bool
     {
         return $this->role === 'admin';

@@ -27,7 +27,7 @@ const PAYMENT_CFG = {
 
 const STEPS = ['pending','preparing','ready','completed'];
 
-// ── Real-time order tracker modal ────────────────────────────
+
 function OrderTracker({ order, onClose }) {
   const [current, setCurrent] = useState(order);
   const intervalRef = useRef(null);
@@ -61,11 +61,11 @@ function OrderTracker({ order, onClose }) {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4"
       style={{background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(6px)'}}>
       <div className="bg-white rounded-3xl shadow-2xl w-full max-w-sm overflow-hidden">
-        {/* Accent bar */}
+        
         <div className="h-1.5 transition-all duration-1000" style={{background: cfg.accent}}/>
 
         <div className="p-6">
-          {/* Header */}
+          
           <div className="flex justify-between items-start mb-5">
             <div>
               <p className="text-xs font-black text-gray-400 uppercase tracking-widest mb-0.5">Live Tracking</p>
@@ -75,7 +75,7 @@ function OrderTracker({ order, onClose }) {
               className="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-500 font-bold transition">×</button>
           </div>
 
-          {/* Big status */}
+         
           {!isCancelled && (
             <div className="rounded-2xl p-5 text-center mb-5 transition-all duration-500"
               style={{background: cfg.bg}}>
@@ -86,7 +86,7 @@ function OrderTracker({ order, onClose }) {
             </div>
           )}
 
-          {/* Progress steps */}
+          
           {!isCancelled && (
             <div className="mb-5">
               <div className="flex gap-1.5 mb-2">
@@ -109,7 +109,7 @@ function OrderTracker({ order, onClose }) {
             </div>
           )}
 
-          {/* Items */}
+         
           <div className="space-y-2 mb-4">
             {current.order_items?.map(item => (
               <div key={item.id} className="flex justify-between items-center px-3 py-2 rounded-xl"
@@ -129,7 +129,7 @@ function OrderTracker({ order, onClose }) {
             <span style={{color: cfg.accent}}>₱{parseFloat(current.total_amount).toFixed(2)}</span>
           </div>
 
-          {/* Live pulse indicator */}
+          
           {!isCompleted && !isCancelled && (
             <div className="flex items-center justify-center gap-2 text-xs font-semibold text-gray-400 mb-4">
               <span className="relative flex h-2 w-2">
@@ -152,7 +152,7 @@ function OrderTracker({ order, onClose }) {
   );
 }
 
-// ── Place Order Modal ────────────────────────────────────────
+
 function PlaceOrderModal({ onClose, onSuccess, prefillItems }) {
   const { user } = useAuth();
   const [payment, setPayment]       = useState('cash');
@@ -344,7 +344,7 @@ function PlaceOrderModal({ onClose, onSuccess, prefillItems }) {
   );
 }
 
-// ── My Orders (customer) ─────────────────────────────────────
+
 function MyOrders() {
   const { user } = useAuth();
   const [orders, setOrders]         = useState([]);
@@ -365,7 +365,7 @@ function MyOrders() {
     fetchOrders();
     const t = setInterval(fetchOrders, 15000);
     return () => clearInterval(t);
-  }, []); // eslint-disable-line
+  }, []); 
 
   const handleSuccess = () => {
     setShowPlace(false); setReorderItems(null);
@@ -380,7 +380,7 @@ function MyOrders() {
     setShowPlace(true);
   };
 
-  // ── Personal stats ─────────────────────────────────────────
+  
   const completedOrders  = orders.filter(o => o.status === 'completed');
   const totalSpent       = completedOrders.reduce((s, o) => s + parseFloat(o.total_amount), 0);
   const itemFreq         = {};
@@ -390,7 +390,7 @@ function MyOrders() {
   }));
   const favoriteItem     = Object.entries(itemFreq).sort((a, b) => b[1] - a[1])[0]?.[0];
 
-  // Loyalty stamps: 1 stamp per completed order, 10 = reward
+  
   const STAMP_KEY = `canteen_stamps_${user?.id || 'guest'}`;
   const stamps    = completedOrders.length % 10;
   const rewards   = Math.floor(completedOrders.length / 10);
@@ -406,7 +406,7 @@ function MyOrders() {
 
   return (
     <div className="h-full flex flex-col overflow-hidden" style={{background: '#f8f7f5'}}>
-      {/* Header */}
+      
       <div className="bg-white px-6 py-4 flex-shrink-0 shadow-sm" style={{borderBottom: '1px solid #f0f0f0'}}>
         <div className="flex items-center justify-between">
           <div>
@@ -448,7 +448,7 @@ function MyOrders() {
         ) : (
           <div className="space-y-4 max-w-2xl mx-auto">
 
-            {/* ── Personal Stats Card ── */}
+           
             {completedOrders.length > 0 && (
               <div className="rounded-2xl overflow-hidden"
                 style={{background: 'linear-gradient(135deg,#1a0800,#3d1500)', border: '1px solid rgba(249,115,22,0.2)'}}>
@@ -470,7 +470,7 @@ function MyOrders() {
                   </div>
                 </div>
 
-                {/* ── Loyalty stamp card ── */}
+                
                 <div className="px-5 pb-4">
                   <div className="rounded-xl p-3" style={{background: 'rgba(255,255,255,0.06)'}}>
                     <div className="flex justify-between items-center mb-2">
@@ -504,7 +504,7 @@ function MyOrders() {
               </div>
             )}
 
-            {/* ── Order cards ── */}
+           
             {orders.map(order => {
               const cfg     = STATUS_CFG[order.status] || STATUS_CFG.pending;
               const pcfg    = PAYMENT_CFG[order.payment_method] || PAYMENT_CFG.cash;
@@ -546,7 +546,7 @@ function MyOrders() {
                         ₱{parseFloat(order.total_amount).toFixed(2)}
                       </span>
                       <div className="flex gap-2">
-                        {/* Track button for active orders */}
+                       
                         {isActive && (
                           <button onClick={e => { e.stopPropagation(); setTracking(order); }}
                             className="text-xs font-black px-3 py-1.5 rounded-xl text-white transition hover:scale-105 active:scale-95"
@@ -554,7 +554,7 @@ function MyOrders() {
                             📡 Track
                           </button>
                         )}
-                        {/* Reorder for completed orders */}
+                       
                         {order.status === 'completed' && (
                           <button onClick={e => { e.stopPropagation(); handleReorder(order); }}
                             className="text-xs font-black px-3 py-1.5 rounded-xl transition hover:scale-105 active:scale-95"
@@ -591,7 +591,7 @@ function MyOrders() {
         )}
       </div>
 
-      {/* Order detail modal */}
+      
       {selected && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4"
           style={{background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)'}}>
@@ -686,7 +686,7 @@ function MyOrders() {
   );
 }
 
-// ── All Orders (admin/cashier) ────────────────────────────────
+
 function AllOrders() {
   const [orders, setOrders]             = useState([]);
   const [loading, setLoading]           = useState(true);
@@ -698,7 +698,7 @@ function AllOrders() {
     orderService.getOrders(params).then(r => { setOrders(r.data.data ?? r.data); setLoading(false); });
   };
 
-  useEffect(() => { fetchOrders(); }, [statusFilter]); // eslint-disable-line
+  useEffect(() => { fetchOrders(); }, [statusFilter]); 
 
   const handleAdvance = async (order) => {
     const next = { pending: 'preparing', preparing: 'ready', ready: 'completed' }[order.status];

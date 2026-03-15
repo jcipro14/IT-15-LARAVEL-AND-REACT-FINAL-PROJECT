@@ -61,10 +61,10 @@ export default function AdminDashboard() {
     <div className="p-6 space-y-6 overflow-y-auto h-full">
       <h1 className="text-2xl font-bold text-gray-800">Dashboard</h1>
 
-      {/* Low stock alert */}
+      
       <LowStockAlert />
 
-      {/* Stat cards */}
+     
       {summary && (
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           <StatCard
@@ -94,13 +94,13 @@ export default function AdminDashboard() {
         </div>
       )}
 
-      {/* Charts row 1: Bar + Pie */}
+      
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <SalesChart data={daily} title="Daily Revenue (Last 14 Days)" />
         <CategoryPieChart data={categories} title="Sales by Category" />
       </div>
 
-      {/* Charts row 2: Line trend + Top sellers table */}
+      
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <OrderTrendChart data={trend} title="Order Volume (Last 30 Days)" />
 

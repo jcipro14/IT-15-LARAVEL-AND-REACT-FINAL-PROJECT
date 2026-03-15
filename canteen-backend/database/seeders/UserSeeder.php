@@ -10,7 +10,7 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        // Admin
+       
         User::create([
             'name'     => 'Jayson Cipro',
             'email'    => 'admin@canteen.com',
@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
             'role'     => 'admin',
         ]);
 
-        // Cashiers
+      
         User::create([
             'name'     => 'Karylle Jayed Madjos',
             'email'    => 'cashier1@canteen.com',
@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
             'role'     => 'cashier',
         ]);
 
-        // Sample customers
+      
         $customers = [
             ['name' => 'Denns Lagang',     'email' => 'lagang@student.edu'],
             ['name' => 'Kaichi Takeda','email' => 'Takeda@student.edu'],

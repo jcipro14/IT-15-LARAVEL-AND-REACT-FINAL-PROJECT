@@ -99,9 +99,9 @@ export default function POSInterface() {
 
   return (
     <div className="flex h-screen overflow-hidden" style={{background: '#f8f7f5'}}>
-      {/* LEFT: Menu */}
+      
       <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Topbar */}
+        
         <div className="bg-white px-5 py-3 shadow-sm border-b border-gray-100">
           <div className="flex items-center gap-3 mb-3">
             <div className="relative flex-1">
@@ -131,7 +131,7 @@ export default function POSInterface() {
           </div>
         </div>
 
-        {/* Menu Grid */}
+        
         <div className="flex-1 overflow-y-auto p-4">
           <div className="grid gap-3" style={{gridTemplateColumns: 'repeat(auto-fill, minmax(145px, 1fr))'}}>
             {filtered.map(item => {
@@ -176,7 +176,7 @@ export default function POSInterface() {
         </div>
       </div>
 
-      {/* RIGHT: Order Panel */}
+      
       <div className="w-76 flex flex-col border-l border-gray-200 bg-white shadow-xl" style={{width: '300px'}}>
         <div className="px-4 py-3 border-b border-gray-100 flex items-center justify-between">
           <div>
@@ -188,7 +188,7 @@ export default function POSInterface() {
           )}
         </div>
 
-        {/* Cart items */}
+        
         <div className="flex-1 overflow-y-auto p-3 space-y-2">
           {cart.items.length === 0 ? (
             <div className="text-center py-16 text-gray-400">
@@ -217,7 +217,7 @@ export default function POSInterface() {
           )}
         </div>
 
-        {/* Payment */}
+        
         {cart.items.length > 0 && (
           <div className="p-4 border-t border-gray-100 space-y-3">
             {error && <div className="text-xs text-red-600 bg-red-50 p-2.5 rounded-xl">{error}</div>}

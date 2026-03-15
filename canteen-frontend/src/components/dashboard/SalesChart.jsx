@@ -3,13 +3,7 @@ import {
   ResponsiveContainer, CartesianGrid,
 } from 'recharts';
 
-/**
- * SalesChart — Bar chart showing daily revenue over the last N days.
- *
- * Props:
- *   data  — array of { date: string, revenue: number, orders: number }
- *   title — optional heading override
- */
+
 export default function SalesChart({ data = [], title = 'Daily Revenue' }) {
   if (data.length === 0) {
     return (

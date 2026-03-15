@@ -19,7 +19,7 @@ export default function LowStockAlert({ onDismiss }) {
 
   return (
     <div className="mb-4 bg-orange-50 border border-orange-200 rounded-2xl overflow-hidden shadow-sm">
-      {/* Header */}
+    
       <div className="flex items-center justify-between px-4 py-3 bg-orange-100 border-b border-orange-200">
         <div className="flex items-center gap-2">
           <span className="text-lg">⚠️</span>
@@ -41,7 +41,7 @@ export default function LowStockAlert({ onDismiss }) {
         </button>
       </div>
 
-      {/* Items */}
+      
       <div className="p-4">
         <div className="flex flex-wrap gap-2">
           {outOfStock.map(item => (

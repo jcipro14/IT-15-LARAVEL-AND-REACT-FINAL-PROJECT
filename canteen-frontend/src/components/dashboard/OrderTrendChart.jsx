@@ -3,13 +3,7 @@ import {
   ResponsiveContainer, CartesianGrid, Legend,
 } from 'recharts';
 
-/**
- * OrderTrendChart — Line chart showing order volume over the last N days.
- *
- * Props:
- *   data  — array of { date: string, total: number, completed: number, cancelled: number }
- *   title — optional heading override
- */
+
 export default function OrderTrendChart({ data = [], title = 'Order Volume Trend' }) {
   if (data.length === 0) {
     return (

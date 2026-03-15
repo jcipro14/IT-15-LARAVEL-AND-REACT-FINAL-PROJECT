@@ -1,18 +1,6 @@
 import { Component } from 'react';
 
-/**
- * ErrorBoundary — catches render errors in the component tree.
- *
- * Usage:
- *   <ErrorBoundary>
- *     <SomeComponent />
- *   </ErrorBoundary>
- *
- *   // With custom fallback:
- *   <ErrorBoundary fallback={<p>Something broke.</p>}>
- *     <SomeComponent />
- *   </ErrorBoundary>
- */
+
 export default class ErrorBoundary extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +12,7 @@ export default class ErrorBoundary extends Component {
   }
 
   componentDidCatch(error, info) {
-    // Log to console; swap for a real error-tracking service if needed
+ 
     console.error('[ErrorBoundary]', error, info.componentStack);
   }
 

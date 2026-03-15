@@ -26,7 +26,7 @@ export default function Navbar({ onMenuToggle }) {
 
   return (
     <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6 shadow-sm shrink-0">
-      {/* Left: hamburger (mobile) + page title */}
+      
       <div className="flex items-center gap-3">
         {onMenuToggle && (
           <button
@@ -40,7 +40,7 @@ export default function Navbar({ onMenuToggle }) {
         <h2 className="text-lg font-bold text-gray-800">{title}</h2>
       </div>
 
-      {/* Right: role badge + user avatar + logout */}
+     
       <div className="flex items-center gap-3">
         <span className={`hidden sm:inline text-xs font-semibold px-3 py-1 rounded-full capitalize ${
           user?.role === 'admin'    ? 'bg-purple-100 text-purple-700' :

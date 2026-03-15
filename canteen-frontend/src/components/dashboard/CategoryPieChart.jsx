@@ -5,13 +5,7 @@ import {
 
 const COLORS = ['#f59e0b', '#ef4444', '#3b82f6', '#10b981', '#8b5cf6', '#f97316'];
 
-/**
- * CategoryPieChart — Pie chart showing revenue distribution by food category.
- *
- * Props:
- *   data  — array of { name: string, value: number }
- *   title — optional heading override
- */
+
 export default function CategoryPieChart({ data = [], title = 'Sales by Category' }) {
   if (data.length === 0) {
     return (

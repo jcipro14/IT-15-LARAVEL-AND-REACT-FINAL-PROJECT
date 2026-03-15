@@ -33,7 +33,7 @@ class Order extends Model
         'completed_at' => 'datetime',
     ];
 
-    // Auto-generate order number on create
+ 
     protected static function boot()
     {
         parent::boot();
@@ -44,7 +44,7 @@ class Order extends Model
         });
     }
 
-    // Relationships
+   
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -65,7 +65,7 @@ class Order extends Model
         return $this->hasMany(InventoryLog::class);
     }
 
-    // Status transitions
+    
     public function canTransitionTo(string $status): bool
     {
         $allowed = [
@@ -87,7 +87,7 @@ class Order extends Model
         ]);
     }
 
-    // Scopes
+    
     public function scopeToday($query)
     {
         return $query->whereDate('created_at', today());

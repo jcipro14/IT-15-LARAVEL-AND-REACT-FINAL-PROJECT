@@ -71,7 +71,7 @@ export default function ReportsPage() {
         </div>
       </div>
 
-      {/* Summary cards */}
+     
       {summary && (
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {[
@@ -93,7 +93,7 @@ export default function ReportsPage() {
         </div>
       )}
 
-      {/* Charts */}
+    
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="bg-white rounded-2xl p-5 shadow-sm">
           <h3 className="font-bold text-gray-700 mb-4">Daily Revenue (Last 30 Days)</h3>

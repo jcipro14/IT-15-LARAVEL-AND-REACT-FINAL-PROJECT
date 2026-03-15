@@ -4,16 +4,16 @@ export default function OrderReceipt({ order, onClose }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 p-4">
       <div className="bg-white rounded-3xl shadow-2xl w-full max-w-sm overflow-hidden">
-        {/* Header */}
+        
         <div className="bg-gradient-to-r from-amber-500 to-orange-500 p-6 text-center text-white">
           <div className="text-4xl mb-2">✅</div>
           <h2 className="text-xl font-bold">Order Placed!</h2>
           <p className="text-amber-100 text-sm mt-1 font-mono">{order.order_number}</p>
         </div>
 
-        {/* Receipt body */}
+        
         <div className="p-6">
-          {/* Items */}
+          
           <div className="space-y-2 mb-4">
             {order.order_items?.map(item => (
               <div key={item.id} className="flex justify-between text-sm">
@@ -28,7 +28,7 @@ export default function OrderReceipt({ order, onClose }) {
             ))}
           </div>
 
-          {/* Totals */}
+         
           <div className="border-t border-dashed border-gray-200 pt-3 space-y-1 text-sm">
             <div className="flex justify-between text-gray-600">
               <span>Subtotal</span>
@@ -64,7 +64,7 @@ export default function OrderReceipt({ order, onClose }) {
             <div>{new Date(order.created_at).toLocaleString()}</div>
           </div>
 
-          {/* Actions */}
+          
           <div className="flex gap-3 mt-5">
             <button
               onClick={handlePrint}

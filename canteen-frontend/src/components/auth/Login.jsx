@@ -127,7 +127,7 @@ export default function Login() {
       ))}
 
       <div className="relative w-full max-w-sm mx-4">
-        {/* Logo */}
+        
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center mb-4 drop-shadow-2xl">
             <CanteenLogo size={80} />
@@ -138,7 +138,7 @@ export default function Login() {
           <p className="text-orange-300 mt-1 text-sm font-medium tracking-widest uppercase">School Canteen System</p>
         </div>
 
-        {/* Card */}
+        
         <div className="rounded-3xl p-8 shadow-2xl border border-orange-900"
           style={{background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(20px)'}}>
 

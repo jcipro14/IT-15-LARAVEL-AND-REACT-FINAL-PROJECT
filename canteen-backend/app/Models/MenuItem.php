@@ -29,7 +29,7 @@ class MenuItem extends Model
         'is_featured' => 'boolean',
     ];
 
-    // Relationships
+  
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -45,7 +45,7 @@ class MenuItem extends Model
         return $this->hasMany(InventoryLog::class);
     }
 
-    // Computed
+   
     public function isLowStock(): bool
     {
         return $this->stock_quantity <= $this->low_stock_threshold;
@@ -56,7 +56,7 @@ class MenuItem extends Model
         return $this->stock_quantity <= 0;
     }
 
-    // Deduct stock and log the change
+    
     public function deductStock(int $quantity, ?int $orderId = null, ?int $userId = null): void
     {
         $before = $this->stock_quantity;
@@ -74,13 +74,13 @@ class MenuItem extends Model
             'order_id' => $orderId,
         ]);
 
-        // Auto mark unavailable if out of stock
+       
         if ($after <= 0) {
             $this->update(['is_available' => false]);
         }
     }
 
-    // Restock and log
+   
     public function restock(int $quantity, string $reason = 'Manual restock', ?int $userId = null): void
     {
         $before = $this->stock_quantity;

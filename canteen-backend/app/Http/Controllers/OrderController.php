@@ -13,13 +13,13 @@ class OrderController extends Controller
     {
         $query = Order::with(['orderItems.menuItem', 'user', 'cashier']);
 
-        // Filter by status
+        
         if ($request->has('status')) {
             $statuses = explode(',', $request->status);
             $query->whereIn('status', $statuses);
         }
 
-        // Filter by date range
+        
         if ($request->has('date_from')) {
             $query->whereDate('created_at', '>=', $request->date_from);
         }
@@ -27,7 +27,7 @@ class OrderController extends Controller
             $query->whereDate('created_at', '<=', $request->date_to);
         }
 
-        // Filter active (queue) orders
+        
         if ($request->has('queue') && $request->queue) {
             $query->active()->orderBy('created_at', 'asc');
         }
@@ -54,7 +54,7 @@ class OrderController extends Controller
             $subtotal = 0;
             $orderItemsData = [];
 
-            // Validate stock and compute totals
+            
             foreach ($request->items as $item) {
                 $menuItem = MenuItem::findOrFail($item['menu_item_id']);
 
@@ -87,7 +87,7 @@ class OrderController extends Controller
             $amountPaid = $request->amount_paid ?? $totalAmount;
             $change = $amountPaid - $totalAmount;
 
-            // Create the order
+           
             $order = Order::create([
                 'user_id'        => $request->user_id,
                 'cashier_id'     => $request->user()->id,
@@ -101,7 +101,7 @@ class OrderController extends Controller
                 'notes'          => $request->notes,
             ]);
 
-            // Create order items and deduct inventory
+            
             foreach ($request->items as $index => $item) {
                 $menuItem = MenuItem::find($item['menu_item_id']);
                 $order->orderItems()->create($orderItemsData[$index]);
@@ -145,7 +145,7 @@ class OrderController extends Controller
         }
 
         DB::transaction(function () use ($order, $request) {
-            // Restore inventory
+           
             foreach ($order->orderItems as $item) {
                 $item->menuItem->restock(
                     $item->quantity,
